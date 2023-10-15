@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML Calculator</title>
+    <style>
+        table {
+            border: 1px solid black;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type="button"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: green;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+
+        input[type="text"] {
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="calcu">
+        <tr>
+            <td colspan="4">
+                <input type="text" id="result" readonly>
+            </td>
+                 <td><input type="button" value="C" onclick="clearDisplay()"></td>
+        </tr>
+
+        <tr>
+            <td><input type="button" value="1" onclick="addToDisplay('1')"></td>
+            <td><input type="button" value="2" onclick="addToDisplay('2')"></td>
+            <td><input type="button" value="3" onclick="addToDisplay('3')"></td>
+            <td><input type="button" value="/" onclick="addToDisplay('/')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="addToDisplay('4')"></td>
+            <td><input type="button" value="5" onclick="addToDisplay('5')"></td>
+            <td><input type="button" value="6" onclick="addToDisplay('6')"></td>
+            <td><input type="button" value="*" onclick="addToDisplay('*')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="addToDisplay('7')"></td>
+            <td><input type="button" value="8" onclick="addToDisplay('8')"></td>
+            <td><input type="button" value="9" onclick="addToDisplay('9')"></td>
+            <td><input type="button" value="-" onclick="addToDisplay('-')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="0" onclick="addToDisplay('0')"></td>
+            <td><input type="button" value="." onclick="addToDisplay('.')"></td>
+            <td><input type="button" value="=" onclick="calculate()"></td>
+            <td><input type="button" value="+" onclick="addToDisplay('+')"></td>
+        </tr>
+    </table>
+
+    <script>
+        function addToDisplay(value) {
+            document.getElementById('result').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('result').value = '';
+        }
+
+        function calculate() {
+            const result = document.getElementById('result');
+            try {
+                result.value = eval(result.value);
+            } catch (error) {
+                result.value = 'Error';
+            }
+        }
+    </script>
+</body>
+
+</html>
